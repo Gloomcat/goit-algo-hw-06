@@ -9,7 +9,7 @@ def print_table(distances, node):
     for vertex in distances:
         distance = distances[vertex]
         if distance != 0:
-            if distance == float('infinity'):
+            if distance == float("infinity"):
                 distance = "∞"
             else:
                 distance = str(distance)
@@ -18,16 +18,16 @@ def print_table(distances, node):
 
 
 def dijkstra(graph, start):
-    distances = {vertex: float('infinity') for vertex in graph}
+    distances = {vertex: float("infinity") for vertex in graph}
     distances[start] = 0
     unvisited = list(graph.nodes)
     visited = []
     while unvisited:
         current_vertex = min(unvisited, key=lambda vertex: distances[vertex])
-        if distances[current_vertex] == float('infinity'):
+        if distances[current_vertex] == float("infinity"):
             break
         for neighbor, props in graph[current_vertex].items():
-            distance = distances[current_vertex] + props['weight']
+            distance = distances[current_vertex] + props["weight"]
             if distance < distances[neighbor]:
                 distances[neighbor] = distance
         visited.append(current_vertex)
